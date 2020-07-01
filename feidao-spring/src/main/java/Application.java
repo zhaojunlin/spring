@@ -1,3 +1,4 @@
+import com.zjl.service.MyService;
 import com.zjl.service.SpringService;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.annotation.ComponentScan;
@@ -13,6 +14,8 @@ public class Application {
 	public static void main(String[] args) {
 		AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(Application.class);
 		SpringService springService = context.getBean(SpringService.class);
+		springService.query();
+		springService = (SpringService) context.getBean("springService", new MyService());
 		springService.query();
 		System.out.println(context.getEnvironment().getProperty("zjl"));
 	}

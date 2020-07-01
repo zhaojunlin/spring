@@ -10,10 +10,14 @@ import javax.annotation.Resource;
 @Component
 public class SpringService {
 
-	@Resource
 	private MyService myService;
 
+	public SpringService(MyService myService) {
+		this.myService = myService;
+	}
+
 	public void query() {
+		System.out.println(myService);
 		myService.execute();
 	}
 
